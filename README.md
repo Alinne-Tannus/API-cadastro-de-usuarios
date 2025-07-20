@@ -34,7 +34,9 @@ JavaScript ESModules (https://nodejs.org/api/esm.html)
 bash
 
 git clone https://github.com/seu-usuario/api-cadastro-de-usuarios.git
+
 cd api-cadastro-de-usuarios
+
 npm install
 --------------------
 ▶️ Execução
@@ -60,6 +62,7 @@ npx prisma generate
 🧪 Exemplos de Requisições
 🔍 GET /users
   * Lista todos os usuários.
+    
   * Suporta filtros:
 
  * ?name=valor
@@ -83,21 +86,22 @@ json
 }
 
 ------------------
-#✏️ PUT /users/:id
+✏️ PUT /users/:id
 
   * Atualiza os dados de um usuário.
 ------------------
-#🗑️ DELETE /users/:id
+🗑️ DELETE /users/:id
 
   * Remove um usuário do banco de dados.
 -----------------------
-#🎨 Front-end (Em Breve)
+🎨 Front-end (Em Breve)
 
 A interface visual será desenvolvida em breve utilizando:
 
-#⚛️ React.js (planejado)
+⚛️ React.js (planejado)
 
 Estilização com CSS moderno ou frameworks como TailwindCSS
 ---------------------
-#📄 Licença
+📄 Licença
+
 Este projeto está sob a licença MIT.
