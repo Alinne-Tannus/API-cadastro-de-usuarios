@@ -35,6 +35,8 @@ JavaScript ESModules (https://nodejs.org/api/esm.html)
 
 ✅ Gerar usuários fictícios com dados aleatórios
 
+✅ Deleta todos os usuários pelo clearData.js
+
 
 📦 Instalação
 -------------------
@@ -69,6 +71,11 @@ Para gerar um usuário aleatório no banco:
 node criador-de-users.mjs
 ```
 
+Para deletar todos os usuários no banco
+
+```
+node clearData.js
+```
 
 
 🔧 Configuração do Prisma
@@ -89,11 +96,11 @@ npx prisma generate
     
   * Suporta filtros:
 
- * ?name=valor
+  ?name=valor
 
- * ?email=exemplo@
+  ?email=exemplo@
 
- * ?age=valor
+  ?age=valor
 
 
 
