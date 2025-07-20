@@ -10,11 +10,17 @@ MongoDB (https://www.mongodb.com)
 JavaScript ESModules (https://nodejs.org/api/esm.html)
 ------------------------
 🚀 Funcionalidades
+
 ✅ Criar usuários
+
 ✅ Listar todos os usuários
+
 ✅ Filtrar usuários por nome, e-mail ou idade
+
 ✅ Atualizar dados de um usuário
+
 ✅ Deletar usuário por ID
+
 ✅ Gerar usuários fictícios com dados aleatórios
 -------------------
 📦 Instalação
