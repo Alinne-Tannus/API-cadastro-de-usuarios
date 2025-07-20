@@ -66,7 +66,7 @@ Para gerar um usuário aleatório no banco:
 
 
 ```
-node criador-de-users.js
+node criador-de-users.mjs
 ```
 
 
