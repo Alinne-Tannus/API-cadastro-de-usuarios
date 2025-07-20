@@ -1,0 +1,29 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}                            
+
+/* Estrutura do banco de dados
+ Aqui definimos como será a estrutura do banco de dados
+O Prisma irá criar a tabela automaticamente com base nesse modelo */ 
+model User {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId // criando um id automaticamente
+  email   String   @unique // único
+  name    String
+  age     Int
+}
+
+/*
+
+  Código para rodar o banco de dados
+  npx prisma db push
+  Esse comando irá criar a tabela no banco de dados com base no modelo definido acima
+  
+*/

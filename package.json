@@ -1,0 +1,22 @@
+{
+  "name": "api-cadastro-de-usuarios",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.12.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.9.0",
+    "prisma": "^6.12.0"
+  }
+}
