@@ -1,12 +1,19 @@
-📚 API de Cadastro de Usuários
+#📚 API de Cadastro de Usuários
+
 Este projeto é uma API RESTful desenvolvida com Node.js, Express e Prisma ORM, conectada ao banco de dados MongoDB. Seu objetivo é realizar operações de CRUD (Create, Read, Update, Delete) para gerenciamento de usuários.
 ---------------------
-⚙️ Tecnologias Utilizadas
-Node.js  (https://nodejs.org/pt) \n
+#⚙️ Tecnologias Utilizadas
+
+Node.js  (https://nodejs.org/pt)
+
 Express (https://expressjs.com)
+
 Prisma ORM (https://www.prisma.io) 
+
 MongoDB (https://www.mongodb.com)
+
 @faker-js/faker (para geração de dados fictícios) (https://github.com/faker-js/faker)
+
 JavaScript ESModules (https://nodejs.org/api/esm.html)
 ------------------------
 🚀 Funcionalidades
@@ -23,14 +30,14 @@ JavaScript ESModules (https://nodejs.org/api/esm.html)
 
 ✅ Gerar usuários fictícios com dados aleatórios
 -------------------
-📦 Instalação
+#📦 Instalação
 bash
 
 git clone https://github.com/seu-usuario/api-cadastro-de-usuarios.git
 cd api-cadastro-de-usuarios
 npm install
 --------------------
-▶️ Execução
+#▶️ Execução
 Para rodar o servidor com Node.js:
 
 bash
@@ -43,23 +50,25 @@ bash
 
 node criador-de-users.js
 -----------------------
-🔧 Configuração do Prisma
+#🔧 Configuração do Prisma
 Para gerar o client Prisma:
 
 bash
 
 npx prisma generate
 -----------------------------
-🧪 Exemplos de Requisições
-🔍 GET /users
+#🧪 Exemplos de Requisições
+#🔍 GET /users
   * Lista todos os usuários.
   * Suporta filtros:
 
-?name=valor
-?email=exemplo@
-?age=valor
+ * ?name=valor
+
+ * ?email=exemplo@
+
+ * ?age=valor
 -------------------------------
-➕ POST /users
+#➕ POST /users
   * Cria um novo usuário:
 
 json
@@ -70,17 +79,17 @@ json
 }
 
 ------------------
-✏️ PUT /users/:id
+#✏️ PUT /users/:id
   * Atualiza os dados de um usuário.
 ------------------
-🗑️ DELETE /users/:id
+#🗑️ DELETE /users/:id
   * Remove um usuário do banco de dados.
 -----------------------
-🎨 Front-end (Em Breve)
+#🎨 Front-end (Em Breve)
 A interface visual será desenvolvida em breve utilizando:
 
-⚛️ React.js (planejado)
+#⚛️ React.js (planejado)
 Estilização com CSS moderno ou frameworks como TailwindCSS
 ---------------------
-📄 Licença
+#📄 Licença
 Este projeto está sob a licença MIT.
