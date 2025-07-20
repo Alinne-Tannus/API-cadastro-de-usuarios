@@ -118,8 +118,6 @@ app.listen(3000, () => {
     *Deletar um usuário
     *Criar uma rota para cada ação
 
-
-    Senha x2ItHaBq89yS6LCk
 */
 
 
