@@ -38,12 +38,12 @@ JavaScript ESModules (https://nodejs.org/api/esm.html)
 
 📦 Instalação
 -------------------
-bash
-
+```bash
 git clone https://github.com/seu-usuario/api-cadastro-de-usuarios.git
-
+```
+```
 cd api-cadastro-de-usuarios
-
+```
 ```npm install```
 
 
