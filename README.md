@@ -44,7 +44,7 @@ git clone https://github.com/seu-usuario/api-cadastro-de-usuarios.git
 
 cd api-cadastro-de-usuarios
 
-npm install
+`npm install`
 
 
 
@@ -54,7 +54,7 @@ Para rodar o servidor com Node.js:
 
 bash
 
-npm run dev
+`npm run dev`
 
 
 
@@ -62,7 +62,7 @@ Para gerar um usuário aleatório no banco:
 
 bash
 
-node criador-de-users.js
+`node criador-de-users.js`
 
 
 
@@ -72,7 +72,7 @@ Para gerar o client Prisma:
 
 bash
 
-npx prisma generate
+`npx prisma generate`
 
 
 
@@ -94,18 +94,18 @@ npx prisma generate
 ➕ POST /users
 -------------------------------
   * Cria um novo usuário:
+`
+json`
+`{`
 
-json
-{
-
-  "name": "Maria Silva",
+  `"name": "Maria Silva",`
   
-  "email": "maria@email.com",
+  `"email": "maria@email.com",`
   
-  "age": 30
+ ` "age": 30`
   
-}
-
+`}
+`
 
 ✏️ PUT /users/:id
 ------------------
