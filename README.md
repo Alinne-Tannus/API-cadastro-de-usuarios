@@ -94,18 +94,15 @@ bash
 ➕ POST /users
 -------------------------------
   * Cria um novo usuário:
-`
-json`
-`{`
 
-  `"name": "Maria Silva",`
-  
-  `"email": "maria@email.com",`
-  
- ` "age": 30`
-  
-`}
-`
+
+```json
+{
+"name": "Maria Silva",
+"email": "maria@email.com",
+"age": 30
+}
+```
 
 ✏️ PUT /users/:id
 ------------------
