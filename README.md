@@ -1,7 +1,9 @@
 📚 API de Cadastro de Usuários
 -----------------------------------
 
-Este projeto é uma API RESTful desenvolvida com Node.js, Express e Prisma ORM, conectada ao banco de dados MongoDB. Seu objetivo é realizar operações de CRUD (Create, Read, Update, Delete) para gerenciamento de usuários.
+Este projeto é uma API RESTful desenvolvida com Node.js, Express e Prisma ORM, conectada ao banco de dados MongoDB.
+
+Seu objetivo é realizar operações de CRUD (Create, Read, Update, Delete) para gerenciamento de usuários.
 
 
 ⚙️ Tecnologias Utilizadas
