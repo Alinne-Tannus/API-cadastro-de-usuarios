@@ -44,7 +44,7 @@ git clone https://github.com/seu-usuario/api-cadastro-de-usuarios.git
 
 cd api-cadastro-de-usuarios
 
-`npm install`
+```npm install```
 
 
 
@@ -54,7 +54,7 @@ Para rodar o servidor com Node.js:
 
 bash
 
-`npm run dev`
+```npm run dev```
 
 
 
@@ -62,7 +62,7 @@ Para gerar um usuário aleatório no banco:
 
 bash
 
-`node criador-de-users.js`
+```node criador-de-users.js```
 
 
 
