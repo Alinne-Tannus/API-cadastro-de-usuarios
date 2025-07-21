@@ -119,26 +119,3 @@ try{
 app.listen(3000, () => {
     console.log('Servidor rodando na porta 3000');
 });
-
-/*
-    Criar API de usuários 
-
-    *Criar um usuário
-    *Listar usuários
-    *Atualizar um usuário
-    *Deletar um usuário
-    *Criar uma rota para cada ação
-
-*/
-
-
-/*
-app.post('/users'); // rota para criar um usuários
-app.put('/users'); // rota para atualizar um usuário
-app.delete('/users'); // rota para deletar um usuário
-
-
-    É necessário que tenha um tipo de rota do método HTTP
-    E precisamos de um endereço para colocar nossa rota
- */
-
