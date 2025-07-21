@@ -1,10 +1,11 @@
 📚 API de Cadastro de Usuários
 -----------------------------------
 
-Este projeto é uma API RESTful desenvolvida com Node.js, Express e Prisma ORM, conectada ao banco de dados MongoDB.
+📚 API de Cadastro de Usuários
 
-Seu objetivo é realizar operações de CRUD (Create, Read, Update, Delete) para gerenciamento de usuários.
+Este projeto é a parte **backend** de uma aplicação **full stack** para cadastro de usuários. Ele foi desenvolvido com **Node.js**, **Express** e **Prisma ORM**, conectado ao banco de dados **MongoDB**.
 
+A API oferece funcionalidades completas de **CRUD** (Create, Read, Update, Delete) com suporte a filtros, geração de dados fictícios e limpeza do banco.
 
 ⚙️ Tecnologias Utilizadas
 ---------------------
@@ -131,15 +132,17 @@ npx prisma generate
   * Remove um usuário do banco de dados.
 
 
-🎨 Front-end (Em Breve)
+🎨 Front-end
 -----------------------
+Este projeto possui uma interface visual feita com:
 
-A interface visual será desenvolvida em breve utilizando:
+* ⚛️ React.js
 
-⚛️ React.js (planejado)
+* 🎨 CSS (puro)
 
-Estilização com CSS moderno ou frameworks como TailwindCSS
+🔗 Acesse o repositório do front-end:
+👉 Projeto Front-end - (Cadastro de Usuários)[https://github.com/Alinne-Tannus/cadastro-de-usuarios]
 
-📄 Licença
----------------------
-Este projeto está sob a licença MIT.
+👩‍💻 Feito por
+--------
+(Alinne Tannus)[https://github.com/Alinne-Tannus]
