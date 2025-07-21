@@ -141,8 +141,8 @@ Este projeto possui uma interface visual feita com:
 * 🎨 CSS (puro)
 
 🔗 Acesse o repositório do front-end:
-👉 Projeto Front-end - (Cadastro de Usuários)[https://github.com/Alinne-Tannus/cadastro-de-usuarios]
+👉 Projeto Front-end - [Cadastro de Usuários](https://github.com/Alinne-Tannus/cadastro-de-usuarios)
 
 👩‍💻 Feito por
 --------
-(Alinne Tannus)[https://github.com/Alinne-Tannus]
+[Alinne Tannus](https://github.com/Alinne-Tannus)
