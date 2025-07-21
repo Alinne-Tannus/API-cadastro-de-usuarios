@@ -1,11 +1,21 @@
 import express from 'express';
 import pkg from '@prisma/client';
+import cors from 'cors'
+
+
+const app = express();
+app.use(cors({
+  origin: 'http://localhost:5173', // endereço exato do front
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+}))
+
+app.use(express.json()); // Middleware para interpretar o corpo da requisição como JSON
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
-const app = express();
 
-app.use(express.json()); // Middleware para interpretar o corpo da requisição como JSON
+
 
 // rota pra criar um usuário
 app.post('/users', async (req, res) => {
@@ -33,6 +43,7 @@ app.get('/users', async (req, res) => {
     try{        
         const { email, name, age } = req.query;
          let users;
+         console.log('Requisição recebida');
 
     if (req.query && Object.keys(req.query).length > 0) {
     users = await prisma.user.findMany({
