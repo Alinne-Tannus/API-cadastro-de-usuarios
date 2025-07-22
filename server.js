@@ -1,5 +1,5 @@
 import express from 'express';
-import pkg from '@prisma/client';
+import { PrismaClient } from './generated/client/index.js';
 import cors from 'cors'
 
 
@@ -11,10 +11,6 @@ app.use(cors({
 }))
 
 app.use(express.json()); // Middleware para interpretar o corpo da requisição como JSON
-
-const { PrismaClient } = pkg;
-const prisma = new PrismaClient();
-
 
 
 // rota pra criar um usuário
