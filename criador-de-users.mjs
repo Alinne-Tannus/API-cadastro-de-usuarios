@@ -5,26 +5,11 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-const createFakeUser = async () => {
-  try {
-    const randomName = faker.person.fullName();
-    const randomEmail = faker.internet.email();
-    const randomAge = faker.number.int({ min: 18, max: 99 });
+export const criarUsuarioFake = async () => {
+    const name = faker.person.fullName();
+    const email = faker.internet.email();
+    const age = faker.number.int({ min: 14, max: 99 });
+ 
+      return{name, email, age}
+}
 
-    await prisma.user.create({
-      data: {
-        email: randomEmail,
-        name: randomName,
-        age: randomAge
-      },
-    });
-
-    console.log(`Usuário fictício criado: ${randomName}, ${randomEmail}, ${randomAge}`);
-  } catch (error) {
-    console.error('Erro ao criar usuário fictício:', error);
-  } finally {
-    await prisma.$disconnect();
-  }
-};
-
-createFakeUser();

@@ -1,17 +1,57 @@
 import express from 'express';
-import { PrismaClient } from '@prisma/client';
 import cors from 'cors'
 
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient(); // <-- ESSENCIAL!
+const port = process.env.PORT || 3000;
+
+import { criarUsuarioFake } from './criador-de-users.mjs';
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://cadastro-de-usuarios-livid.vercel.app'
+];
 
 const app = express();
+
 app.use(cors({
-  origin: 'http://localhost:5173', // endereço exato do front
+  origin: function(origin, callback){
+    // permitir requests sem origin (ex: Postman)
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      const msg = 'Acesso CORS bloqueado pela política de segurança.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
-}))
+}));
 
 app.use(express.json()); // Middleware para interpretar o corpo da requisição como JSON
 
+// rota para criar um usuário fictício
+
+app.post('/users/criador-de-users', async (req, res) => {
+  try {
+     const novoUsuario = await criarUsuarioFake();
+
+    console.log('Usuário a ser criado:', novoUsuario); // Adicione isso
+
+    const user = await prisma.user.create({
+     data: novoUsuario
+    });
+
+    res.status(201).json(user);
+  } catch (error) {
+    console.error('Erro ao criar usuário aleatório:', error);
+    res.status(500).json({
+      error: 'Erro ao criar usuário aleatório',
+      message: error.message
+    });
+  }
+});
 
 // rota pra criar um usuário
 app.post('/users', async (req, res) => {
@@ -31,7 +71,6 @@ try{
     
     };
 });
-
 
 /* Padrão express 
 rota para listar usuários */ 
@@ -112,6 +151,6 @@ try{
 });
 
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log('Servidor rodando na porta 3000');
 });
