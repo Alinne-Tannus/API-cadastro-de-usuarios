@@ -7,26 +7,28 @@ const prisma = new PrismaClient(); // <-- ESSENCIAL!
 const port = process.env.PORT || 3000;
 
 import { criarUsuarioFake } from './criador-de-users.mjs';
+import { clearData } from './clearData.js';   
 
 const allowedOrigins = [
-  'http://localhost:5173',
-  'https://cadastro-de-usuarios-livid.vercel.app'
+    'http://localhost:5173',
+    'https://cadastro-de-usuarios-livid.vercel.app'
 ];
 
 const app = express();
 
+
 app.use(cors({
-  origin: function(origin, callback){
-    // permitir requests sem origin (ex: Postman)
-    if(!origin) return callback(null, true);
-    if(allowedOrigins.indexOf(origin) === -1){
-      const msg = 'Acesso CORS bloqueado pela política de segurança.';
-      return callback(new Error(msg), false);
-    }
-    return callback(null, true);
-  },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type'],
+    origin: function (origin, callback) {
+        // permitir requests sem origin (ex: Postman)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'Acesso CORS bloqueado pela política de segurança.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
 }));
 
 app.use(express.json()); // Middleware para interpretar o corpo da requisição como JSON
@@ -34,121 +36,123 @@ app.use(express.json()); // Middleware para interpretar o corpo da requisição 
 // rota para criar um usuário fictício
 
 app.post('/users/criador-de-users', async (req, res) => {
-  try {
-     const novoUsuario = await criarUsuarioFake();
-
-    console.log('Usuário a ser criado:', novoUsuario); // Adicione isso
-
-    const user = await prisma.user.create({
-     data: novoUsuario
-    });
-
-    res.status(201).json(user);
-  } catch (error) {
-    console.error('Erro ao criar usuário aleatório:', error);
-    res.status(500).json({
-      error: 'Erro ao criar usuário aleatório',
-      message: error.message
-    });
-  }
+    try {
+        const novoUsuario = await criarUsuarioFake();
+        console.log('Usuário a ser criado:', novoUsuario); // Adicione isso
+        const user = await prisma.user.create({
+            data: novoUsuario
+        });
+        res.status(201).json(user);
+    } catch (error) {
+        console.error('Erro ao criar usuário aleatório:', error);
+        res.status(500).json({
+            error: 'Erro ao criar usuário aleatório',
+            message: error.message
+        });
+    }
 });
 
 // rota pra criar um usuário
 app.post('/users', async (req, res) => {
-try{
-    await prisma.user.create({
-        data: {
-            email: req.body.email, // Email do usuário enviado no corpo da requisição
-            name: req.body.name, // Nome do usuário enviado no corpo da requisição
-            age: Number(req.body.age) // Idade do usuário enviada no corpo da requisição
-        },
-    })
+    try {
+        await prisma.user.create({
+            data: {
+                email: req.body.email, // Email do usuário enviado no corpo da requisição
+                name: req.body.name, // Nome do usuário enviado no corpo da requisição
+                age: Number(req.body.age) // Idade do usuário enviada no corpo da requisição
+            },
+        })
 
-     res.status(201).send('Usuário criado com sucesso!'); // Resposta de sucesso
-    } catch(error) {
-    console.error(error); // Log do erro no console
-     res.status(500).json({ error: "Erro ao criar usuário"});
-    
+        res.status(201).send('Usuário criado com sucesso!'); // Resposta de sucesso
+    } catch (error) {
+        console.error(error); // Log do erro no console
+        res.status(500).json({ error: "Erro ao criar usuário" });
+
     };
 });
 
 /* Padrão express 
-rota para listar usuários */ 
+rota para listar usuários */
 app.get('/users', async (req, res) => {
-    try{        
+    try {
         const { email, name, age } = req.query;
-         let users;
-         console.log('Requisição recebida');
+        let users;
+        console.log('Requisição recebida');
 
-    if (req.query && Object.keys(req.query).length > 0) {
-    users = await prisma.user.findMany({
-        where: {
-        ...(email && { email: { contains: email.toString(), mode: 'insensitive' } }),
-        ...(name && { name: { contains: name.toString(), mode: 'insensitive' } }),
-        ...(age && { age: Number(age) }),
-        },
-    });
+        if (req.query && Object.keys(req.query).length > 0) {
+            users = await prisma.user.findMany({
+                where: {
+                    ...(email && { email: { contains: email.toString(), mode: 'insensitive' } }),
+                    ...(name && { name: { contains: name.toString(), mode: 'insensitive' } }),
+                    ...(age && { age: Number(age) }),
+                },
+            });
 
-    if (users.length === 0) {
-        console.log('Nenhum usuário encontrado com os parâmetros fornecidos');
-        users = await prisma.user.findMany(); // busca tudo se filtro não achar nada
-    }
-    } else {
-    users = await prisma.user.findMany(); // busca tudo se não tiver filtro
-    }
-
-    return res.status(200).json(users);
-
-        
-        }
-        catch(error) {
+            if (users.length === 0) {
+                console.log('Nenhum usuário encontrado com os parâmetros fornecidos');
+                users = await prisma.user.findMany(); // busca tudo se filtro não achar nada
+            }
+        } else {
+            users = await prisma.user.findMany(); // busca tudo se não tiver filtro
+        } return res.status(200).json(users);
+    } catch (error) {
         console.error('Erro ao buscar usuários:', error); // Log do erro no console
-        return res.status(500).json({ 
-        error: "Erro ao buscar usuários", 
-        message: error.message,
-        stack: error.stack 
+        return res.status(500).json({
+            error: "Erro ao buscar usuários",
+            message: error.message,
+            stack: error.stack
         });
-        };
-
-        console.log('Rota /users acessada com sucesso'); // Log para indicar que a rota foi acessada com sucesso
+    };
 });
 
 // Rota para atualizar um usuário
 app.put('/users/:id', async (req, res) => {
-try{
-    await prisma.user.update({
-       where:{
-        id: req.params.id // ID do usuário enviado no corpo da requisição
-       },
-        data: {
-            email: req.body.email, // Email do usuário enviado no corpo da requisição
-            name: req.body.name, // Nome do usuário enviado no corpo da requisição
-            age: Number(req.body.age) // Idade do usuário enviada no corpo da requisição
-        },
-    })
-
-     res.status(201).send('Usuário atualizado com sucesso!'); // Resposta de sucesso
-    } catch(error) {
-    console.error(error); // Log do erro no console
-     res.status(500).json({ error: "Erro ao atualizar usuário"});
-    
+    try {
+        // Atualiza o usuário com base no ID passado pela URL
+        const updateUser = await prisma.user.update({
+            where: {
+                id: req.params.id 
+            },
+            data: {
+                email: req.body.email, // Email do usuário enviado no corpo da requisição
+                name: req.body.name,   // Nome do usuário enviado no corpo da requisição
+                age: Number(req.body.age) // Idade do usuário enviada no corpo da requisição
+            },
+        });
+        res.status(201).send('Usuário atualizado com sucesso!'); // Resposta de sucesso
+    } catch (error) {
+        console.error(error); // Log do erro no console
+        res.status(500).json({ error: "Erro ao atualizar usuário", message: error.message }); // Retorna o erro detalhado
     };
 });
+
 
 app.delete('/users/:id', async (req, res) => {
-try{
-    await prisma.user.delete({
-        where: {
-            id: req.params.id // ID do usuário a ser deletado
-        },
-    })
+    try {
+        await prisma.user.delete({
+            where: {
+                id: req.params.id // ID do usuário a ser deletado
+            },
+        })
 
-    res.status(200).send('Usuário deletado com sucesso!'); // Resposta de sucesso
-}   catch(error) {
-    console.error(error); // Log do erro no console
-    res.status(500).json({ error: "Erro ao deletar usuário" });
+        res.status(200).send('Usuário deletado com sucesso!'); // Resposta de sucesso
+    } catch (error) {
+        console.error(error); // Log do erro no console
+        res.status(500).json({ error: "Erro ao deletar usuário" });
     };
 });
+
+// Rota para deletar todos os usuários
+app.delete('/users', async (req, res) => {
+  try {
+    await prisma.user.deleteMany({});
+    res.status(200).send('Todos os usuários foram deletados com sucesso!');
+  } catch (error) {
+    console.error('Erro ao deletar todos os usuários:', error);
+    res.status(500).json({ error: "Erro ao deletar todos os usuários", message: error.message });
+  }
+});
+
 
 
 app.listen(port, () => {
